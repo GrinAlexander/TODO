@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ToDo.Models;
 using ToDo.ViewModels;
@@ -25,7 +26,7 @@ namespace ToDo.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ToDoItemViewModel>>> Get()
         {
-            var toDoItems = await _context.ToDoItems.ToListAsync();
+            var toDoItems = await _context.ToDoItems.Where(x => x.IsActive).ToListAsync();
             var mappedItems = _mapper.Map<List<ToDoItemViewModel>>(toDoItems);
             return Ok(mappedItems);
         }

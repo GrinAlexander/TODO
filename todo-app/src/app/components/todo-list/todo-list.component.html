@@ -1,22 +1,18 @@
 <header>
-    <h1>{{title}}</h1>
-  </header>
+  <h1>{{title}}</h1>
+</header>
 
 <div class="todo-list">
-    <form (submit)="addTodo()">
-		<input 
-			type="text"
-			name="inputTodo"
-			placeholder="I want to do..."
-			class="todo-input"
-			[(ngModel)]="inputTodo"
-		/>
-		<input type="submit" value="Add Todo" class="todo-submit" />
-    </form>
-    
-    <div *ngFor="let todo of todoItems"  class="todo {{(todo.isDone ? 'done' : '')}}">
-        <div class="id">{{todo.id}}</div>
-        <div class="content">{{todo.note}}</div>
-        <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
-    </div>
+  <form (submit)="addTodo()">
+    <input type="text" maxlength="50" name="inputTodo" placeholder="I want to do..." class="todo-input"
+      [(ngModel)]="inputTodo" />
+    <input type="submit" value="Add Todo" class="todo-submit" />
+  </form>
+
+  <div *ngFor="let todo of todoItems; let i = index;" class="todo {{(todo.isDone ? 'done' : '')}}">
+    <div class="id">{{todo.id}}</div>
+    <div class="content">{{todo.note}}</div>
+    <mat-checkbox class="example-margin" [checked]="todo.isDone" (change)="changeIsDone(todo)"></mat-checkbox>
+    <button class="delete" (click)="deleteTodo(todo.id)">Delete</button>
+  </div>
 </div>

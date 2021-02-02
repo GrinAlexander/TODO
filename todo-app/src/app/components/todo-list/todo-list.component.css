@@ -1,3 +1,7 @@
+h1{
+	text-align: center;
+}
+
 .todo {
 	display: flex;
 	padding: 10px 15px;
@@ -22,7 +26,7 @@
 }
 
 .todo.done .content {
-	text-decoration: line-through;
+	color: #A9A9A9;
 }
 
 .todo-input {
@@ -54,3 +58,7 @@
 	font-size: 18px;
 	font-weight: 700;
 }
+
+input[type="submit"].todo-submit:hover {
+	background-color: #1bc470;
+  }
